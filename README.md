@@ -18,3 +18,6 @@ https://stackoverflow.com/questions/71885891/urllib3-exceptions-maxretryerror-ht
 - Estudar uma forma de implementar um "esperar" em forma de condicional (while) e retirar sleeps do código
 
 - Testar tirar bloqueio com undetected_chromedriver caso o selenium-stealth não funcione
+
+- Usar mudança de ip com proxy
+    https://www.youtube.com/watch?v=fzxXeSSf3OU
