@@ -35,15 +35,13 @@ def capture_data_company(url: str) -> dict:
   page_company = BeautifulSoup(content, 'html.parser')
 
   div_registry = page_company.find('div', attrs={'class': 'bg-white shadow sm:rounded-lg mb-3 mt-3 p-0.5'})
-  div_info_registry = div_registry.find('div', attrs={'class': 'border-gray-200'})
+  div_info_registry = div_registry.find('div', attrs={'class': 'mx-auto border-t border-gray-200 p-2 sm:p-4 grid max-w-2xl grid-cols-1 gap-2 sm:gap-4 sm:grid-cols-2 lg:max-w-none lg:grid-cols-3'})
+  data = div_info_registry.findAll('dl')
 
   data_return = {}
-  for line in div_info_registry:
-    if line.text.strip(' ') != '':
-      line_list_data = line.text.strip(' ').split(':')
-      line_list_data[1] = line_list_data[1].lstrip()
-      data = build_json_response(line_list_data)
-      data_return.update(data)
+  for line in data:
+    if line.dt:
+      data_return.update({line.dt.text.strip(' ').lower().replace(' ', '_'): line.p.text.strip(' ') if line.p else line.dd.text.strip(' ')})
   return data_return
 
 

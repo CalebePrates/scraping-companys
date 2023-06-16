@@ -1,7 +1,8 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
 from time import sleep
 from teste import *
 
@@ -17,21 +18,9 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('window-size=1920,1080')
 
-navegador = webdriver.Chrome(options=options)
-navegador.get('https://cadastroempresa.com.br/procura?q=uberlandia')
+navegador = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+navegador.get('https://cadastroempresa.com.br/procura?q=abaete')
 
 content = navegador.page_source
 links = capture_links_company(content)
 capture_data_in_link(links)
-
-sleep(5)
-btn_next_is_visible = navegador.find_element(By.PARTIAL_LINK_TEXT, 'Próximo')
-while btn_next_is_visible:
-  btn_next = navegador.find_element(By.PARTIAL_LINK_TEXT, 'Próximo')
-  btn_next.click()
-  sleep(0.5)
-  content = navegador.page_source
-  links = capture_links_company(content)
-  capture_data_in_link(links)
-  sleep(5)
-  btn_next_is_visible = navegador.find_element(By.PARTIAL_LINK_TEXT, 'Próximo')
