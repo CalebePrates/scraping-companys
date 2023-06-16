@@ -21,3 +21,6 @@ https://stackoverflow.com/questions/71885891/urllib3-exceptions-maxretryerror-ht
 
 - Usar mudança de ip com proxy
     https://www.youtube.com/watch?v=fzxXeSSf3OU
+    
+    - biblioteca com lista
+      https://pypi.org/project/Proxy-List-Scrapper/
