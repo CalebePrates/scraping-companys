@@ -1,30 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-def build_json_response(line_data: list) -> dict:
-  response = {}
-  if line_data[0] == 'CNPJ':
-    response['cnpj'] = line_data[1]
-  if line_data[0] == 'Inscrição Estadual MG':
-    response['state_registration'] = line_data[1]
-  if line_data[0] == 'Nome de Fantasia':
-    response['trade_name'] = line_data[1]
-  if line_data[0] == 'Nome Empresarial':
-    response['corporate_name'] = line_data[1]
-  if line_data[0] == 'Data da Abertura':
-    response['creation_date'] = line_data[1]
-  if line_data[0] == 'Capital Social':
-    response['capital_social'] = line_data[1]
-  if line_data[0] == 'Tipo':
-    response['type'] = line_data[1]
-  if line_data[0] == 'Situação':
-    response['status'] = line_data[1]
-  if line_data[0] == 'Natureza Jurídica':
-    response['legal_status'] = line_data[1]
-
-  return response
-
-
 def capture_data_company(url: str) -> dict:
   """
   Função que espera uma URL de detalhes de uma empresa dentro do site cadastroempresa.com.br
