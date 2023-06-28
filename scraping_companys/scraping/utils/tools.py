@@ -54,3 +54,14 @@ def capture_links_company(content) -> list:
             links.append(link["href"])
 
     return links
+
+
+def capture_data_in_link(links: list):
+    """
+    Função que recebe uma lista de links e retorna uma
+    lista de dados de empresas desses links
+    """
+    data_return = []
+    for link in links:
+        data_return.append(capture_data_company("https://cadastroempresa.com.br" + link))
+    return data_return
